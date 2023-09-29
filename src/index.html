@@ -1,17 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>T5S - Visual</title>
+    <meta property="og:title" content="Agency modern template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+   
+    <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <!-- Import tfjs-vis -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
-</head>
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>-->
+  <script src="video.js"></script>
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Noto Sans;
+        font-size: 16px;
+      }
 
-<body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
 
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <div class="home-navbar">
+          <header data-thq="thq-navbar" class="home-navbar-interactive">
+            <div class="home-branding">
+              <img alt="image" src="public/logo.svg" class="home-logo" />
+              <span class="home-company">T5S-Visual</span>
+            </div>
+            <div class="home-items">
+              <div class="home-links">
+                <span class="nav-link"><a href="#func">Funcionalidades</a></span>
+                <span class="nav-link"><a href="#about">Sobre nós</a></span>
+              </div>
+              <button class="start-button button home-button" autoplay>
+                <span class="home-text02"><a href="#play">Vamos lá</a></span>
+              </button>
+            </div>
+            <div data-thq="thq-burger-menu" class="home-burger-menu">
+              <button class="home-button1 button">
+                <img
+                  alt="image"
+                  src="public/hamburger.svg"
+                  class="home-image"
+                />
+                <span class="home-text03">Vamos Lá</a></span>
+              </button>
+            </div>
+            <div data-thq="thq-mobile-menu" class="home-mobile-menu">
+              <div
+                data-thq="thq-mobile-menu-nav"
+                data-role="Nav"
+                class="home-nav"
+              >
+                <div class="home-top">
+                  <div class="home-branding1">
+                    <img alt="image" src="public/logo.svg" class="home-logo1" />
+                    <span class="home-company1">T5S-Visual</span>
+                  </div>
+                  <div data-thq="thq-close-menu" class="home-menu-close">
+                    <svg viewBox="0 0 1024 1024" class="home-icon">
+                      <path
+                        d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="home-items1">
+                  <div class="home-links1">
+                    <span class="nav-link"><a href="#func">Funcionalidades</a></span>
+                    <span class="nav-link"><a href="#about">Sobre nós</a></span>
+                  </div>
+                  <button class="start-button button home-button2">
+                    <span class="home-text08"><a href="#play">Vamos lá</a></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+        <header class="home-hero">
+          <div class="home-header">
+            <h1 class="home-title">VAMOS APOIAR OS CEGOS A VER</h1>
+            <p class="home-description">
+              Este projeto busca auxiliar as pessoas com deficiência visual na
+              movimentação em ambientes internos, que não estejam adaptados a
+              eles.&nbsp;
+            </p>
+          </div>
+        </header>
+        <div class="home-video">
+          <video
+            src=""
+            poster="public/Capa_Video.png"
+            class="home-video1"
+          ></video>
+        </div>
+        <div class="home-description1" id="play">
+          <div class="home-header1"><h2 class="heading">Vamos começar</h2></div>
+          <div class="home-container1">
+            <!--Video, eu nem sei fazer essa merda mas vamos la-->
+            <div id="liveView">
+              <video width="640" height="480"  id="vid"></video>
+            </div>
+            
+            <script src="model js.js"></script>
+            </div>
+            <div class="info-model" id="texto-model">{Espaço para o texto de direcionamento e texto que será reproduzido}</div>
+            <button class="start-button button home-button3" id="but" autoplay>
+              <span class="home-text09">Iniciar Camera</span>
+            </button>
+         
+        </div>
+        <div class="home-services" id="func">
+          <div class="home-header2">
+            <h2 class="heading">FUNCIONALIDADES&nbsp;</h2>
+          </div>
+          <div class="home-grid">
+            <div class="service-service service-root-class-name">
+              <h3 class="service-title"><span>Portas</span></h3>
+              <span class="service-description">
+                <span>
+                  A primeira funcionalidade implementada, foi a identificação de
+                  entradas e saídas
+                </span>
+              </span>
+            </div>
+            <div class="service-service service-root-class-name1">
+              <h3 class="service-title"><span>Plug and Play</span></h3>
+              <span class="service-description">
+                <span>
+                  Idealmente buscamos fornecer um serviço de fácil implementaçao em diversos sistemas
+                </span>
+              </span>
+            </div>
+            <div class="service-service service-root-class-name5">
+              <h3 class="service-title"><span>Open Source</span></h3>
+              <span class="service-description">
+                <span>
+                  No que se diz respeito as melhorias da ferramenta, pretenderemos deixar ele disponivel a comunidade.
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="home-about" id="about">
+          <div class="home-clients">
+            <div class="home-header3">
+              <h2 class="home-title3 heading">Sobre nós</h2>
+            </div>
+            <div>
+              <p>&nbsp;</p>
+              <p class="home-description">
+                A equipe é formada por estudantes do curso de bancos de dados da FIAP
+                .&nbsp;
+              </p>
+            </div>
+            <div class="home-grid1">
+              <div class="home-column">
+                <div class="client-client client-root-class-name">
+                  <div class="client-author">
+                    <img
+                      alt="image"
+                      src="shel.png"
+                      class="client-avatar"
+                    />
+                    <div class="client-details">
+                      <span class="client-text1">
+                        <span><a href="https://www.linkedin.com/in/samuel-prudencio-3a048b199/">Samuel Prudencio</a></span>
+                      </span>
+                      <span class="client-text2"><span></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="client-client client-root-class-name1">
+                  <div class="client-author">
+                    <img
+                      alt="image"
+                      src="rod.png"
+                      class="client-avatar"
+                    />
+                    <div class="client-details">
+                      <span class="client-text1"><span><a href="https://www.linkedin.com/in/rodrigo-ferreira-torres-b92186228/">Rodrigo Torres</a></span></span>
+                      <span class="client-text2"><span></span></span>
+                    </div>
+                  </div>
+                </div>
+              
+            
+                <div class="client-client">
+                  <span class="client-text">
+                  <div class="client-author">
+                    <img
+                      alt="image"
+                      src="Mel.jpg"
+                      class="client-avatar"
+                    />
+                    <div class="client-details">
+                      <span class="client-text1">
+                        <span><a href="https://www.linkedin.com/in/melissa-yuri-hirata-193b63232/">Melissa Hirata</a></span>
+                      </span>
+                      <span class="client-text2"><span></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="client-client">
+                  <div class="client-author">
+                    <img
+                      alt="image"
+                      src="Dan.png"
+                      class="client-avatar"
+                    />
+                    <div class="client-details">
+                      <span class="client-text1">
+                        <span><a href="https://www.linkedin.com/in/danilo-parisi-a44822208/">Danilo Parisi</a></span>
+                      </span>
+                      <span class="client-text2">
+                        <span></span>
+                      </span>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="client-client">
+                  <div class="client-author">
+                    <img
+                      alt="image"
+                      src="Maia.jpg"
+                      class="client-avatar"
+                    />
+                    <div class="client-details">
+                      <span class="client-text1">
+                        <span><a href="https://www.linkedin.com/in/pedro-maia-a8a299208/">Pedro Maia</a></span>
+                      </span>
+                      <span class="client-text2">
+                        <span></span>
+                      </span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <!--<div class="home-statistics">
+            <button class="start-button button home-button4">
+              <span class="home-text10">Nos apoie!</span>
+            </button>-->
+            <div class="home-statistic-list"></div>
+          </div>
+          <div class="home-client-list"></div>
+        </div>
+      </div>
+    </div>
+    <script
+      data-section-id="navbar"
+      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+    ></script>
+  </body>
 </html>
